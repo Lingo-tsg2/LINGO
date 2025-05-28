@@ -1,4 +1,3 @@
-
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { text, targetLang = 'en' } = req.body;
@@ -16,3 +15,5 @@ export default async function handler(req, res) {
     res.status(405).end();
   }
 }
+
+
