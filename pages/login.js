@@ -4,12 +4,15 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 // Firebase config com variáveis de ambiente
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  const firebaseConfig = {
+  apiKey: "AIzaSyD29Yn7q6HphGQ1Y31dC6Id3W4A6VT3tA",
+  authDomain: "lingo-app-5dfab.firebaseapp.com",
+  projectId: "lingo-app-5dfab",
+  storageBucket: "lingo-app-5dfab.appspot.com",
+  messagingSenderId: "68031201790",
+  appId: "1:68031201790:web:76a3498a57ca21104f80af"
+};
+
 };
 
 // Inicializa Firebase apenas uma vez
