@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // Firebase config com variáveis de ambiente
 const firebaseConfig = {
   const firebaseConfig = {
-  apiKey: "AIzaSyD29Yn7q6HphGQ1Y31dC6Id3W4A6VT3tA",
+  apiKey: "AIzaSyCAIDb8sJqiBXsJRnjBDkz6-Y0PHcVeeKE",
   authDomain: "lingo-app-5dfab.firebaseapp.com",
   projectId: "lingo-app-5dfab",
   storageBucket: "lingo-app-5dfab.appspot.com",
