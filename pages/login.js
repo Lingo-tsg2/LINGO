@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyD29Yn7q6HphGQ1Y31dC6Id3W4A6VT3tA",
   authDomain: "lingo-app-5dfab.firebaseapp.com",
@@ -11,16 +12,19 @@ const firebaseConfig = {
   appId: "1:68031201790:web:76a3498a57ca21104f80af"
 };
 
-// Inicializa o Firebase (somente uma vez)
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Inicializa Firebase somente uma vez
+if (getApps().length === 0) {
+  initializeApp(firebaseConfig);
+}
+
+const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export default function Login() {
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      alert(`Logado como: ${result.user.displayName}`);
+      alert(`Bem-vindo, ${result.user.displayName}`);
     } catch (error) {
       alert("Erro ao logar: " + error.message);
     }
@@ -28,18 +32,18 @@ export default function Login() {
 
   return (
     <div style={{ textAlign: "center", padding: "3rem" }}>
-      <h1>Login com Google</h1>
+      <h1>Entrar com Google</h1>
       <button
+        onClick={handleLogin}
         style={{
-          padding: "1rem 2rem",
-          fontSize: "1rem",
-          background: "#4285F4",
+          backgroundColor: "#4285F4",
           color: "#fff",
           border: "none",
+          padding: "1rem 2rem",
           borderRadius: "8px",
-          cursor: "pointer"
+          cursor: "pointer",
+          fontSize: "1rem"
         }}
-        onClick={handleLogin}
       >
         Continuar com Google
       </button>
