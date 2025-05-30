@@ -1,20 +1,14 @@
 
-import Head from 'next/head';
-import Link from 'next/link';
-
 export default function Home() {
   return (
-    <div style={{ fontFamily: 'Arial', textAlign: 'center', marginTop: '10%' }}>
-      <Head>
-        <title>LINGO - Um Só Mundo</title>
-      </Head>
-      <h1>🌍 LINGO</h1>
+    <div style={{ textAlign: "center", padding: "2rem" }}>
+      <h1>Bem-vindo ao LINGO</h1>
       <p>Um só mundo. Um só idioma. Todas as vozes.</p>
-      <Link href="/chat">
-        <button style={{ padding: '10px 20px', marginTop: '20px', fontSize: '16px' }}>
-          Ir para o Chat Traduzido
+      <a href="/login">
+        <button style={{ padding: "1rem", marginTop: "2rem" }}>
+          Ir para o Login
         </button>
-      </Link>
+      </a>
     </div>
   );
 }
