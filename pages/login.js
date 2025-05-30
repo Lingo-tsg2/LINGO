@@ -1,33 +1,49 @@
-// pages/login.js
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD29Yn7q6HphGQ1Y31dC6Id3W4A6VT3tA",
+  authDomain: "lingo-app-5dfab.firebaseapp.com",
+  projectId: "lingo-app-5dfab",
+  storageBucket: "lingo-app-5dfab.appspot.com",
+  messagingSenderId: "68031201790",
+  appId: "1:68031201790:web:76a3498a57ca21104f80af"
+};
+
+// Inicializa o Firebase (somente uma vez)
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 export default function Login() {
-  const [user, setUser] = useState(null);
-
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      alert(`Logado como: ${result.user.displayName}`);
     } catch (error) {
-      console.error("Erro no login:", error);
+      alert("Erro ao logar: " + error.message);
     }
   };
 
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-      <h1>Bem-vindo ao LINGO</h1>
-      {!user ? (
-        <button onClick={handleLogin} style={{ padding: "1rem", fontSize: "1.2rem" }}>
-          Continuar com Google
-        </button>
-      ) : (
-        <div>
-          <p>Olá, {user.displayName}!</p>
-          <img src={user.photoURL} alt="Foto de perfil" width={100} style={{ borderRadius: "50%" }} />
-        </div>
-      )}
+    <div style={{ textAlign: "center", padding: "3rem" }}>
+      <h1>Login com Google</h1>
+      <button
+        style={{
+          padding: "1rem 2rem",
+          fontSize: "1rem",
+          background: "#4285F4",
+          color: "#fff",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer"
+        }}
+        onClick={handleLogin}
+      >
+        Continuar com Google
+      </button>
     </div>
   );
 }
+
